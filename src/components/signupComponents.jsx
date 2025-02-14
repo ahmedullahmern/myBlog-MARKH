@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Logo from "../../../assets/Logo.png";
+// import Logo from "../../../assets/Logo.png";
 import { Link, } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -13,7 +13,7 @@ const SignupComponents = () => {
         setIsLoading(true)
         console.log("e==>", e)
         const obj = {
-            fullname: e.target[0].value,
+            name: e.target[0].value,
             email: e.target[1].value,
             password: e.target[2].value,
         }
@@ -23,12 +23,14 @@ const SignupComponents = () => {
             .then((res) => {
                 setIsLoading(false)
                 console.log("res In The Success==>", res)
-                console.log("res in login==>", res?.data?.accessToken)
-                Swal("Opp! sucseess",err)
+                Swal.fire({
+                    title: 'Register Successfully!',
+                    icon: 'success',
+                })
             }).catch((err) => {
                 setIsLoading(false)
-                console.log("err=>",err)
-                console.log("err in the Register=>", err.response.data.msg)
+                // console.log("err=>",err)
+                // console.log("err in the Register=>", err.response.data.msg)
                 // console.log("err in the Register=>")
                 const errorMessage = err.response ? err.response.data.msg : err.message;
                 Swal.fire({
@@ -41,13 +43,13 @@ const SignupComponents = () => {
     return (
         <div className="bg-gray-100 flex flex-col items-center justify-center min-h-screen">
             {/* Logo */}
-                <div className="mb-3">
+            {/* <div className="mb-3">
                     <img
                         src={Logo} // Replace with your logo URL
                         alt="Logo"
                         className="h-24 w-24"
                     />
-                </div>
+                </div> */}
 
             {/* Form Container */}
             <div className="bg-white p-5 rounded-lg shadow-lg w-full max-w-md">
@@ -108,7 +110,7 @@ const SignupComponents = () => {
                     </div>
 
                     {/*Confrom Password */}
-{/* 
+                    {/* 
                     <div>
                         <label
                             htmlFor="password"

@@ -1,6 +1,6 @@
 import LoginComponent from "../../components/loginComponents";
 
-export default function loginPage() {
+export default function LoginPage() {
     return (
         <LoginComponent />
     )
